@@ -1,5 +1,6 @@
 package com.epam.rd.autotasks;
 
+
 public enum Direction {
     N(0), NE(45), E(90), SE(135), S(180), SW(225), W(270), NW(315);
 
@@ -11,32 +12,17 @@ public enum Direction {
 
     public static Direction ofDegrees(int degrees) {
         degrees = checkDegrees(degrees);
-
         switch (degrees){
-            case 0, 360 -> {
+            case 0:
+            case 360:
                 return N;
-            }
-            case 45 -> {
-                return NE;
-            }
-            case 90 -> {
-                return E;
-            }
-            case 135 -> {
-                return SE;
-            }
-            case 180 -> {
-                return S;
-            }
-            case 225 -> {
-                return SW;
-            }
-            case 270 -> {
-                return W;
-            }
-            case 315 -> {
-                return NW;
-            }
+            case 45: return NE;
+            case 90: return E;
+            case 135: return SE;
+            case 180: return S;
+            case 225: return SW;
+            case 270: return W;
+            case 315: return NW;
         }
         return null;
     }
@@ -49,6 +35,7 @@ public enum Direction {
         }
         return degrees;
     }
+
     public static Direction closestToDegrees(int degrees) {
         degrees = checkDegrees(degrees);
 
@@ -73,16 +60,17 @@ public enum Direction {
     }
 
     public Direction opposite() {
-        return switch (this) {
-            case N -> S;
-            case NE -> SW;
-            case E -> W;
-            case SE -> NW;
-            case S -> N;
-            case SW -> NE;
-            case W -> E;
-            case NW -> SE;
-        };
+        switch (this){
+            case N: return S;
+            case NE: return SW;
+            case E: return W;
+            case SE: return NW;
+            case S: return N;
+            case SW: return NE;
+            case W: return E;
+            case NW: return SE;
+        }
+        return null;
     }
 
     public int differenceDegreesTo(Direction direction) {
